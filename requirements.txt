@@ -6,3 +6,5 @@ python-dotenv
 pymupdf
 
 -e .
+
+protobuf==3.20.3
