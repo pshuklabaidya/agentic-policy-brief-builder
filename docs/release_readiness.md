@@ -24,7 +24,7 @@ Release-readiness checks run repository-health checks first and then validate th
 - the README includes setup or quickstart instructions;
 - the README includes local validation commands or links to validation documentation;
 - the README links to CI or quality-gate documentation;
-- evaluation, CI, and release-readiness documentation exists;
+- evaluation, CI, release-readiness, release-notes, portfolio-overview, interview talk-track, limitations, and roadmap documentation exists;
 - the deterministic local eval script exists;
 - the CI workflow includes Ruff, pytest, and deterministic local eval commands;
 - tests, CI, local evals, and these health checks do not require a real `OPENAI_API_KEY`.

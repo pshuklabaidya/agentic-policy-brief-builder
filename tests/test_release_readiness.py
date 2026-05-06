@@ -40,6 +40,14 @@ def create_release_ready_repository(root: Path) -> None:
         root / "docs/release_readiness.md",
         "# Release readiness\nOffline deterministic checks.\n",
     )
+    for relative_path in (
+        "docs/release_notes.md",
+        "docs/portfolio_overview.md",
+        "docs/interview_talk_track.md",
+        "docs/limitations.md",
+        "docs/roadmap.md",
+    ):
+        _write(root / relative_path, f"# {relative_path}\nPortfolio documentation.\n")
     _write(root / ".github/workflows/ci.yml", CI)
     _write(root / "scripts/run_local_evals.py", "print('deterministic local evals')\n")
 
