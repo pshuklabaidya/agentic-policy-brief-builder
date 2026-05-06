@@ -1,0 +1,69 @@
+[
+  {
+    "case_id": "housing_needs_zoning_reform",
+    "question": "What zoning reforms should Riverton consider to improve housing affordability near transit?",
+    "expected_topic_keywords": ["housing", "zoning", "transit", "affordability"],
+    "expected_evidence_ids": [
+      "EVID-01-city-housing-needs-memo-section-0",
+      "EVID-02-zoning-reform-options-section-0"
+    ],
+    "expected_evidence_patterns": [
+      "one-half mile of frequent transit",
+      "duplexes, triplexes",
+      "68% of residential land"
+    ],
+    "expected_brief_sections": [
+      "executive_summary",
+      "key_findings",
+      "policy_options",
+      "risks_and_tradeoffs",
+      "recommendation",
+      "evidence_used"
+    ]
+  },
+  {
+    "case_id": "community_feedback_displacement",
+    "question": "How should Riverton address community concerns about displacement and accessibility during zoning reform?",
+    "expected_topic_keywords": ["displacement", "accessible", "community", "monitoring"],
+    "expected_evidence_ids": [
+      "EVID-03-community-feedback-summary-section-0",
+      "EVID-03-community-feedback-summary-section-1",
+      "EVID-02-zoning-reform-options-section-1"
+    ],
+    "expected_evidence_patterns": [
+      "Anti-displacement advocates",
+      "accessible units",
+      "tenant outreach"
+    ],
+    "expected_brief_sections": [
+      "executive_summary",
+      "key_findings",
+      "policy_options",
+      "risks_and_tradeoffs",
+      "recommendation",
+      "evidence_used"
+    ]
+  },
+  {
+    "case_id": "implementation_metrics",
+    "question": "Which implementation timeline and metrics should Riverton use to track zoning reform outcomes?",
+    "expected_topic_keywords": ["timeline", "metrics", "permits", "rents"],
+    "expected_evidence_ids": [
+      "EVID-04-implementation-timeline-section-0",
+      "EVID-04-implementation-timeline-section-1"
+    ],
+    "expected_evidence_patterns": [
+      "Months 0-3",
+      "Average days from complete application to approval",
+      "displacement indicators"
+    ],
+    "expected_brief_sections": [
+      "executive_summary",
+      "key_findings",
+      "policy_options",
+      "risks_and_tradeoffs",
+      "recommendation",
+      "evidence_used"
+    ]
+  }
+]
