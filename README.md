@@ -120,6 +120,45 @@ Optional additions by project type:
 - Docker for stronger reproducibility
 - MkDocs or GitHub Pages for expanded documentation
 
+
+## Local Configuration
+
+The Streamlit app reads configuration from environment variables, a local `.env` file, or Streamlit secrets. Environment variables take precedence over Streamlit secrets. Do not commit real secrets.
+
+Required and optional variables are documented in `.env.example`:
+
+| Variable | Required | Purpose |
+|---|---:|---|
+| `OPENAI_API_KEY` | Yes | OpenAI API key used for model and embedding requests |
+| `OPENAI_MODEL` | No | Chat/model name for policy brief generation |
+| `OPENAI_EMBEDDING_MODEL` | No | Embedding model name for retrieval |
+| `APP_ENV` | No | App environment: `local`, `test`, `staging`, or `production` |
+| `VECTOR_STORE_DIR` | No | Local vector-store persistence directory |
+
+PowerShell local setup:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m streamlit run app\streamlit_app.py
+```
+
+For Streamlit Community Cloud or local Streamlit secrets, use `.streamlit/secrets.toml` and keep it out of git:
+
+```toml
+OPENAI_API_KEY = "sk-your-key"
+OPENAI_MODEL = "gpt-5.5"
+OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
+APP_ENV = "local"
+VECTOR_STORE_DIR = ".chroma"
+```
+
+The app shows a clear error message if `OPENAI_API_KEY` is missing.
+
 ## Quality Checklist
 
 Before featuring any project created from this template:
