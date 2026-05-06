@@ -1,8 +1,8 @@
-# AI Project Template
+# Agentic Policy Brief Builder
 
-Reusable Streamlit-first template for building AI portfolio projects focused on Agentic RAG, LLM evaluation, synthetic-data demos, AI automation, and decision-support workflows.
+Agentic Policy Brief Builder is a Streamlit-first Agentic RAG portfolio project for generating cited policy briefs from synthetic local policy documents. It demonstrates offline ingestion, chunking, retrieval, brief drafting, citation audit, deterministic local evaluation, and CI quality gates for a public, recruiter-friendly AI application.
 
-> Status: Template repository for AI portfolio projects. This repository is not a finished AI application.
+> Status: Portfolio-ready Agentic RAG policy brief builder with deterministic offline tests and synthetic-data demos.
 
 ## Purpose
 
@@ -163,6 +163,20 @@ The app shows a clear error message if `OPENAI_API_KEY` is missing.
 ## Continuous Integration
 
 GitHub Actions runs the `CI` workflow for pull requests targeting `main`, pushes to `main`, and manual dispatches. The workflow runs Ruff, pytest, and deterministic synthetic-data local evaluation gates without requiring `OPENAI_API_KEY` or live OpenAI API calls. See `docs/ci.md` for details and matching local commands.
+
+
+## Repository Health and Release Readiness
+
+This project includes deterministic, offline repository-health and release-readiness checks for public portfolio review. They verify required files and package directories, CI and local eval wiring, release-readiness documentation, synthetic-data disclosure, and the absence of obvious local generated artifacts or secret-bearing files.
+
+Run the checks locally from the repository root:
+
+```bash
+python scripts/check_repo_health.py
+python scripts/check_release_readiness.py
+```
+
+These checks do not require a real `OPENAI_API_KEY`, do not make live OpenAI API calls, and do not publish releases. See `docs/release_readiness.md` for the full checklist.
 
 ## Quality Checklist
 
