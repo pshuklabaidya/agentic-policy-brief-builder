@@ -210,3 +210,11 @@ No GitHub release, tag, package publication, hosted deployment, or artifact publ
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
+
+## Live Demo
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agentic-policy-brief-builder-m2m32uagba6zjainkf8kkc.streamlit.app)
+
+Live Streamlit app: https://agentic-policy-brief-builder-m2m32uagba6zjainkf8kkc.streamlit.app
+
+Public demo uses synthetic data for portfolio demonstration purposes.

@@ -24,3 +24,9 @@
 - Public docs cover limitations, release readiness, CI behavior, evaluation design, and demo boundaries.
 
 **Demo note:** public demos use synthetic fictional data and are scoped as a portfolio artifact, not a production policy-analysis system.
+
+## Live Demo
+
+Live Streamlit app: https://agentic-policy-brief-builder-m2m32uagba6zjainkf8kkc.streamlit.app
+
+Public demo uses synthetic data for portfolio demonstration purposes.

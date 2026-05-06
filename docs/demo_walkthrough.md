@@ -58,3 +58,9 @@ For a custom local demo:
 - Citation audit catches missing section citations and citations to evidence IDs that were not retrieved.
 - Local evals and CI gates are deterministic and synthetic-data-based, so reviewers can validate the project without secrets or live model calls.
 - Production use would require stronger evaluation, access control, privacy controls, monitoring, governance, and human approval workflows.
+
+## Live Demo
+
+Live Streamlit app: https://agentic-policy-brief-builder-m2m32uagba6zjainkf8kkc.streamlit.app
+
+Public demo uses synthetic data for portfolio demonstration purposes.

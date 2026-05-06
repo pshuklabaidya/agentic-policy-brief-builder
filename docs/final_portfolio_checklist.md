@@ -54,3 +54,9 @@ Confirm the commands pass before featuring the project.
 - [ ] No private customer data, employer data, confidential records, production exports, or real policy case files are committed.
 - [ ] No generated caches, local vector stores, build folders, coverage outputs, or virtual environments are committed.
 - [ ] Screenshots are not committed unless intentionally small, approved, and free of sensitive content.
+
+## Live Demo
+
+Live Streamlit app: https://agentic-policy-brief-builder-m2m32uagba6zjainkf8kkc.streamlit.app
+
+Public demo uses synthetic data for portfolio demonstration purposes.
