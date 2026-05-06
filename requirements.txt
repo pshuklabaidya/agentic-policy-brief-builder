@@ -4,3 +4,5 @@ pytest
 ruff
 python-dotenv
 pymupdf
+
+-e .
