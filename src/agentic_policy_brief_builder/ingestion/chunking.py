@@ -11,6 +11,14 @@ from agentic_policy_brief_builder.retrieval.evidence import build_evidence_id
 DEFAULT_CHUNK_SIZE = 1_000
 DEFAULT_CHUNK_OVERLAP = 150
 
+__all__ = [
+    "ChunkSettings",
+    "DocumentChunk",
+    "chunk_document_record",
+    "chunk_document_records",
+    "validate_chunk_settings",
+]
+
 
 @dataclass(frozen=True, slots=True)
 class ChunkSettings:
@@ -114,10 +122,10 @@ def chunk_document_record(
 def validate_chunk_settings(chunk_size: int, chunk_overlap: int) -> None:
     """Validate chunk settings and raise ``ValueError`` for invalid values."""
 
-    if not isinstance(chunk_size, int):
+    if not _is_integer_candidate(chunk_size):
         msg = "chunk_size must be an integer"
         raise TypeError(msg)
-    if not isinstance(chunk_overlap, int):
+    if not _is_integer_candidate(chunk_overlap):
         msg = "chunk_overlap must be an integer"
         raise TypeError(msg)
     if chunk_size <= 0:
@@ -129,6 +137,10 @@ def validate_chunk_settings(chunk_size: int, chunk_overlap: int) -> None:
     if chunk_overlap >= chunk_size:
         msg = "chunk_overlap must be smaller than chunk_size"
         raise ValueError(msg)
+
+
+def _is_integer_candidate(value: object) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool)
 
 
 def _iter_text_windows(
