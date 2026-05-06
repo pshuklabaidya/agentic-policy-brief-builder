@@ -94,6 +94,23 @@ def check_release_readiness(root: str | Path = ".") -> HealthCheckResult:
             "missing_release_readiness_docs",
             "Release-readiness documentation is required.",
         ),
+        ("docs/release_notes.md", "missing_release_notes", "Release notes are required."),
+        (
+            "docs/portfolio_overview.md",
+            "missing_portfolio_overview",
+            "Portfolio overview documentation is required.",
+        ),
+        (
+            "docs/interview_talk_track.md",
+            "missing_interview_talk_track",
+            "Interview talk-track documentation is required.",
+        ),
+        (
+            "docs/limitations.md",
+            "missing_limitations_docs",
+            "Limitations documentation is required.",
+        ),
+        ("docs/roadmap.md", "missing_roadmap_docs", "Roadmap documentation is required."),
         (
             "scripts/run_local_evals.py",
             "missing_local_eval_script",
