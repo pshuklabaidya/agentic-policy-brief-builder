@@ -3,3 +3,4 @@ pandas
 pytest
 ruff
 python-dotenv
+pymupdf
