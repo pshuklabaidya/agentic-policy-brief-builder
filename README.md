@@ -95,9 +95,9 @@ Each generated project should replace this template README with a project-specif
 - Roadmap
 - License
 
-## Synthetic-Data Disclosure Template
+## Synthetic-Data Disclosure
 
-Use language like this in every generated project:
+Public demos for this project use synthetic data. The demo policy packet lives in `data/synthetic/policy_packet/` and covers the fictional topic of local housing affordability and zoning reform in the City of Riverton.
 
 > This project uses synthetic data for educational and portfolio demonstration purposes. It does not contain private customer data, employer data, confidential records, or production exports.
 
