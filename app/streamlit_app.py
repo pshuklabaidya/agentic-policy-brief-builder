@@ -35,6 +35,8 @@ from agentic_policy_brief_builder.retrieval import (
 from agentic_policy_brief_builder.ui import (
     citation_audit_to_markdown,
     policy_brief_to_markdown,
+    policy_brief_to_pdf_bytes,
+    policy_brief_to_text,
     retrieved_evidence_to_markdown,
 )
 
@@ -192,7 +194,7 @@ def _run_policy_brief_workflow(
     _display_retrieved_evidence(retrieved_results)
     _display_policy_brief(draft)
     _display_citation_audit(audit)
-    _display_markdown_download(draft, retrieved_results, audit)
+    _display_export_downloads(draft, retrieved_results, audit)
 
 
 def _load_selected_documents(
@@ -319,7 +321,7 @@ def _display_citation_audit(audit: CitationAuditResult) -> None:
         st.write("None")
 
 
-def _display_markdown_download(
+def _display_export_downloads(
     draft: PolicyBriefDraft,
     retrieved_results: tuple[RetrievalResult, ...],
     audit: CitationAuditResult,
@@ -331,11 +333,29 @@ def _display_markdown_download(
             citation_audit_to_markdown(audit).strip(),
         )
     )
+    text_export = policy_brief_to_text(draft, retrieved_results, audit)
+    pdf_export = policy_brief_to_pdf_bytes(draft, retrieved_results, audit)
+
     st.download_button(
-        "Download Markdown brief",
+        "Download Markdown",
         data=markdown_export + "\n",
         file_name="policy_brief.md",
         mime="text/markdown",
+        key="download-policy-brief-markdown",
+    )
+    st.download_button(
+        "Download TXT",
+        data=text_export,
+        file_name="policy_brief.txt",
+        mime="text/plain",
+        key="download-policy-brief-txt",
+    )
+    st.download_button(
+        "Download PDF",
+        data=pdf_export,
+        file_name="policy_brief.pdf",
+        mime="application/pdf",
+        key="download-policy-brief-pdf",
     )
 
 

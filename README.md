@@ -14,7 +14,7 @@ This repository does **not** include private customer data, employer data, confi
 
 Policy teams often need to synthesize long memos, public comments, timelines, and option papers into concise decision briefs. Manual synthesis is slow, and citation tracking can be fragile.
 
-This project demonstrates an AI-assisted workflow that keeps source evidence visible: retrieve relevant evidence, draft a structured brief, audit citations, and export Markdown for review.
+This project demonstrates an AI-assisted workflow that keeps source evidence visible: retrieve relevant evidence, draft a structured brief, audit citations, and export Markdown, TXT, or PDF files for review.
 
 See [`docs/portfolio_overview.md`](docs/portfolio_overview.md) for business framing, target users, demo workflow, and architecture notes. For a complete public demo path, start with [`docs/demo_walkthrough.md`](docs/demo_walkthrough.md).
 
@@ -24,7 +24,7 @@ See [`docs/portfolio_overview.md`](docs/portfolio_overview.md) for business fram
 - Document loading, text chunking, local retrieval, and cited policy brief drafting.
 - Structured brief sections for key findings, policy options, risks/tradeoffs, recommendations, and evidence notes.
 - Citation audit that checks whether cited evidence IDs map back to retrieved evidence.
-- Markdown formatting and download support for briefs, retrieved evidence, and audit context.
+- Markdown, TXT, and PDF formatting/download support for briefs, retrieved evidence, and audit context.
 - Deterministic local evals using synthetic fixtures and fake clients.
 - CI gates for linting, tests, local evals, repository health, and release readiness.
 - Public documentation for release notes, portfolio review, interview preparation, limitations, and roadmap.
@@ -38,7 +38,7 @@ Streamlit app
   -> local vector retrieval
   -> citation-aware brief drafting
   -> citation audit
-  -> Markdown formatting/export
+  -> Markdown/TXT/PDF formatting/export
 ```
 
 Reusable application code lives under `src/agentic_policy_brief_builder/`:
@@ -49,7 +49,7 @@ Reusable application code lives under `src/agentic_policy_brief_builder/`:
 | `retrieval` | Create embeddings, index chunks, and retrieve relevant evidence. |
 | `drafting` | Build structured policy brief drafts from policy questions and evidence. |
 | `audit` | Validate citation references against retrieved evidence IDs. |
-| `ui` | Format briefs, evidence, and audit results for Streamlit/Markdown display. |
+| `ui` | Format briefs, evidence, and audit results for Streamlit display and Markdown/TXT/PDF exports. |
 | `evals` | Run deterministic local evaluation fixtures and quality gates. |
 | `health` | Check repository health and release readiness. |
 
@@ -99,7 +99,7 @@ The deterministic tests, local evals, CI gates, repository-health check, and rel
 python -m streamlit run app/streamlit_app.py
 ```
 
-In the UI, choose **Use synthetic policy packet** for the safest public demo path, enter a policy question, generate the cited brief, review retrieved evidence and citation audit, then download Markdown output if desired.
+In the UI, choose **Use synthetic policy packet** for the safest public demo path, enter a policy question, generate the cited brief, review retrieved evidence and citation audit, then download Markdown, TXT, or PDF output if desired.
 
 ## Local validation commands
 

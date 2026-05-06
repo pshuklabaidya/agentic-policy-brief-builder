@@ -31,7 +31,7 @@ The interactive app requires local configuration for model-backed embedding and 
 6. **Review retrieved evidence.** Expand the ranked evidence results and point out each evidence ID, document name, source type, page when available, chunk index, and text excerpt.
 7. **Review the generated brief.** Walk through the executive summary, key findings, policy options, risks/tradeoffs, recommendation, and evidence-used list.
 8. **Review citation audit.** Show whether the audit passed, any findings, and unused evidence IDs. Explain that this is a grounding check against retrieved evidence IDs, not a full factual or legal review.
-9. **Download Markdown.** Use `Download Markdown brief` to export the generated brief, retrieved evidence, and citation-audit context for offline review.
+9. **Download exports.** Use `Download Markdown`, `Download TXT`, or `Download PDF` to export the generated brief, retrieved evidence, and citation-audit context for offline review.
 
 ## Synthetic packet path
 

@@ -4,6 +4,7 @@ pytest
 ruff
 python-dotenv
 pymupdf
+reportlab>=4.2,<5
 
 -e .
 
