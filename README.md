@@ -16,7 +16,7 @@ Policy teams often need to synthesize long memos, public comments, timelines, an
 
 This project demonstrates an AI-assisted workflow that keeps source evidence visible: retrieve relevant evidence, draft a structured brief, audit citations, and export Markdown for review.
 
-See [`docs/portfolio_overview.md`](docs/portfolio_overview.md) for business framing, target users, demo workflow, and architecture notes.
+See [`docs/portfolio_overview.md`](docs/portfolio_overview.md) for business framing, target users, demo workflow, and architecture notes. For a complete public demo path, start with [`docs/demo_walkthrough.md`](docs/demo_walkthrough.md).
 
 ## Features
 
@@ -155,6 +155,20 @@ The checks verify required files, source package directories, test coverage entr
 See [`docs/release_readiness.md`](docs/release_readiness.md) and [`docs/release_notes.md`](docs/release_notes.md) for the release-readiness checklist and first portfolio-ready release notes.
 
 ## Documentation guide
+
+### Final portfolio path
+
+Start here when preparing a public portfolio demo, recruiter review, or GitHub profile entry:
+
+- [`docs/demo_walkthrough.md`](docs/demo_walkthrough.md): end-to-end Streamlit demo flow for synthetic packet and TXT/PDF upload paths.
+- [`docs/profile_readme_entry.md`](docs/profile_readme_entry.md): concise copy-ready project entry for a GitHub profile README.
+- [`docs/recruiter_summary.md`](docs/recruiter_summary.md): hiring-manager-friendly summary of the project and technical strengths.
+- [`docs/technical_deep_dive.md`](docs/technical_deep_dive.md): readable architecture and implementation explanation.
+- [`docs/demo_script.md`](docs/demo_script.md): 3-minute and 7-minute walkthrough scripts with likely Q&A.
+- [`docs/screenshot_guide.md`](docs/screenshot_guide.md): recommended portfolio screenshots, captions, and synthetic-data disclosure guidance.
+- [`docs/final_portfolio_checklist.md`](docs/final_portfolio_checklist.md): final public-readiness, validation, CI, release-readiness, and hygiene checklist.
+
+### Existing project docs
 
 - [`docs/portfolio_overview.md`](docs/portfolio_overview.md): business problem, product value, target user, workflow, and architecture.
 - [`docs/release_notes.md`](docs/release_notes.md): first portfolio-ready release notes and validation gates.
