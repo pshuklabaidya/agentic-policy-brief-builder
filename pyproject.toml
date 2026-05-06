@@ -50,3 +50,6 @@ ignore = []
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+markers = [
+  "evals: deterministic local evaluation tests",
+]
