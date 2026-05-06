@@ -125,6 +125,8 @@ def test_human_readable_slug_generation() -> None:
         (10, 11, ValueError, "chunk_overlap must be smaller than chunk_size"),
         (10.5, 1, TypeError, "chunk_size must be an integer"),
         (10, 1.5, TypeError, "chunk_overlap must be an integer"),
+        (True, 0, TypeError, "chunk_size must be an integer"),
+        (10, False, TypeError, "chunk_overlap must be an integer"),
     ],
 )
 def test_invalid_chunk_settings_raise_clear_errors(

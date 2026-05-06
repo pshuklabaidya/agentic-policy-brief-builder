@@ -7,6 +7,12 @@ import re
 _DEFAULT_DOCUMENT_SLUG = "document"
 _NON_ALPHANUMERIC_RE = re.compile(r"[^a-z0-9]+")
 
+__all__ = [
+    "build_evidence_id",
+    "document_slug",
+    "evidence_page_or_section",
+]
+
 
 def document_slug(document_name: str) -> str:
     """Return a deterministic, human-readable slug for a document name.
