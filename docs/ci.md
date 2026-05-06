@@ -16,9 +16,11 @@ The CI job runs on `ubuntu-latest` with Python 3.12 and a pip dependency cache. 
 
 1. Ruff linting;
 2. the pytest test suite;
-3. deterministic local evaluations.
+3. deterministic local evaluations;
+4. repository-health checks;
+5. release-readiness checks.
 
-Any failing lint, test, or required evaluation gate fails the workflow.
+Any failing lint, test, required evaluation gate, repository-health check, or release-readiness check fails the workflow.
 
 ## Evaluation safety
 
@@ -36,4 +38,6 @@ python -m pip install -r requirements.txt
 python -m ruff check .
 python -m pytest
 python scripts/run_local_evals.py
+python scripts/check_repo_health.py
+python scripts/check_release_readiness.py
 ```

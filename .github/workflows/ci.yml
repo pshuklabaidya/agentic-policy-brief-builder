@@ -43,3 +43,9 @@ jobs:
 
       - name: Run deterministic local evals
         run: python scripts/run_local_evals.py
+
+      - name: Run repository health check
+        run: python scripts/check_repo_health.py
+
+      - name: Run release readiness check
+        run: python scripts/check_release_readiness.py
