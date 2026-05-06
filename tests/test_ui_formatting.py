@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import builtins
 from dataclasses import dataclass
+from pathlib import Path
+
+import pytest
 
 from agentic_policy_brief_builder.audit import (
     CitationAuditFinding,
@@ -11,6 +15,8 @@ from agentic_policy_brief_builder.drafting import BriefSection, EvidenceCitation
 from agentic_policy_brief_builder.ui import (
     citation_audit_to_markdown,
     policy_brief_to_markdown,
+    policy_brief_to_pdf_bytes,
+    policy_brief_to_text,
     retrieved_evidence_to_markdown,
 )
 
@@ -105,6 +111,54 @@ def test_empty_optional_fields_are_handled_cleanly() -> None:
     assert "No retrieved evidence." in evidence_markdown
 
 
+def test_policy_brief_text_export_includes_title_evidence_ids_and_audit() -> None:
+    audit = _audit()
+
+    text = policy_brief_to_text(
+        _draft(),
+        (FakeRetrievalResult(evidence_id="EVID-1", text="Evidence snippet"),),
+        audit,
+    )
+
+    assert "Policy Brief" in text
+    assert "EVID-1" in text
+    assert "EVID-2" in text
+    assert "Citation Audit" in text
+    assert "unused_retrieved_evidence" in text
+
+
+def test_policy_brief_pdf_export_returns_pdf_bytes_without_repo_artifacts() -> None:
+    before_pdf_files = set(Path.cwd().rglob("*.pdf"))
+
+    pdf_bytes = policy_brief_to_pdf_bytes(
+        _draft(),
+        (FakeRetrievalResult(evidence_id="EVID-1", text="Evidence snippet"),),
+        _audit(),
+    )
+
+    assert isinstance(pdf_bytes, bytes)
+    assert pdf_bytes.startswith(b"%PDF-")
+    assert set(Path.cwd().rglob("*.pdf")) == before_pdf_files
+
+
+def test_export_helpers_do_not_call_openai_apis(monkeypatch: pytest.MonkeyPatch) -> None:
+    original_import = builtins.__import__
+
+    def fail_openai_import(name: str, *args: object, **kwargs: object) -> object:
+        if name == "openai" or name.startswith("openai."):
+            raise AssertionError("export helpers must not call OpenAI APIs")
+        return original_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", fail_openai_import)
+
+    draft = _draft()
+    audit = _audit()
+
+    assert policy_brief_to_markdown(draft).startswith("# Policy Brief")
+    assert policy_brief_to_text(draft, (), audit).startswith("Policy Brief")
+    assert policy_brief_to_pdf_bytes(draft, (), audit).startswith(b"%PDF-")
+
+
 def _draft() -> PolicyBriefDraft:
     return PolicyBriefDraft(
         title="Policy Brief",
@@ -153,6 +207,25 @@ def _draft() -> PolicyBriefDraft:
                 cited_text="Evidence two",
             ),
         ),
+    )
+
+
+def _audit() -> CitationAuditResult:
+    return CitationAuditResult(
+        passed=True,
+        findings=(
+            CitationAuditFinding(
+                severity=CitationAuditSeverity.WARNING,
+                code="unused_retrieved_evidence",
+                message="Retrieved evidence ID was not cited in the draft.",
+                evidence_id="EVID-unused",
+            ),
+        ),
+        missing_citations=(),
+        unknown_citations=(),
+        unused_evidence_ids=("EVID-unused",),
+        used_evidence_ids=("EVID-1", "EVID-2"),
+        available_evidence_ids=("EVID-1", "EVID-2", "EVID-unused"),
     )
 
 
