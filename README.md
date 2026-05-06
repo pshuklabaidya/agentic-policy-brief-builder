@@ -159,6 +159,11 @@ VECTOR_STORE_DIR = ".chroma"
 
 The app shows a clear error message if `OPENAI_API_KEY` is missing.
 
+
+## Continuous Integration
+
+GitHub Actions runs the `CI` workflow for pull requests targeting `main`, pushes to `main`, and manual dispatches. The workflow runs Ruff, pytest, and deterministic synthetic-data local evaluation gates without requiring `OPENAI_API_KEY` or live OpenAI API calls. See `docs/ci.md` for details and matching local commands.
+
 ## Quality Checklist
 
 Before featuring any project created from this template:

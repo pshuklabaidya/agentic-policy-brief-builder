@@ -1,32 +1,45 @@
-name: ci
+name: CI
 
 on:
-  push:
   pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  checks:
+    name: Tests, linting, and local evals
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
 
-      - name: Run tests
-        run: pytest
+      - name: Run Ruff
+        run: python -m ruff check .
 
-      - name: Run lint check
-        run: ruff check .
+      - name: Run pytest
+        run: python -m pytest
+
+      - name: Run deterministic local evals
+        run: python scripts/run_local_evals.py
