@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import streamlit as st
 
+from agentic_policy_brief_builder.config import format_missing_config_message, load_config
+
 
 def main() -> None:
     st.set_page_config(
@@ -16,6 +18,16 @@ def main() -> None:
     st.caption(
         "Agentic RAG app for cited policy briefs with risk review and citation auditing."
     )
+
+    config = load_config(streamlit_secrets=st.secrets)
+    missing_config_message = format_missing_config_message(config)
+    if missing_config_message:
+        st.error(missing_config_message)
+    else:
+        st.success(
+            "Configuration loaded. OpenAI and vector-store settings are ready for the "
+            f"{config.app_env} environment."
+        )
 
     st.info(
         "MVP build baseline: ingestion, retrieval, agents, and citation audit "
@@ -34,6 +46,9 @@ def main() -> None:
     )
 
     if st.button("Generate cited policy brief", type="primary"):
+        if missing_config_message:
+            st.error(missing_config_message)
+            return
         if not uploaded_files:
             st.warning("Upload at least one TXT or PDF policy document.")
             return
